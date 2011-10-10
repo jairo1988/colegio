@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Subject:
+  = @asignatura.subject
+%p
+  %b Profesor:
+  = @asignatura.profesor
+
+= link_to 'Edit', edit_asignatura_path(@asignatura)
+\|
+= link_to 'Back', asignaturas_path

@@ -1,0 +1,21 @@
+%h1 Listing alumnos
+
+%table
+  %tr
+    %th Name
+    %th Apellido
+    %th
+    %th
+    %th
+
+  - @alumnos.each do |alumno|
+    %tr
+      %td= alumno.name
+      %td= alumno.apellido
+      %td= link_to 'Show', alumno
+      %td= link_to 'Edit', edit_alumno_path(alumno)
+      %td= link_to 'Destroy', alumno, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Alumno', new_alumno_path

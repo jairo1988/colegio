@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @alumno.name
+%p
+  %b Apellido:
+  = @alumno.apellido
+
+= link_to 'Edit', edit_alumno_path(@alumno)
+\|
+= link_to 'Back', alumnos_path

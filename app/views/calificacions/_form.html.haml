@@ -1,0 +1,13 @@
+= form_for @calificacion do |f|
+  -if @calificacion.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@calificacion.errors.count, "error")} prohibited this calificacion from being saved:"
+      %ul
+        - @calificacion.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :nota
+    = f.text_field :nota
+  .actions
+    = f.submit 'Save'

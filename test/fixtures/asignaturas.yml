@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  subject: MyString
+  profesor: MyString
+
+two:
+  subject: MyString
+  profesor: MyString

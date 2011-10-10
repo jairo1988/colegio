@@ -1,0 +1,21 @@
+%h1 Listing asignaturas
+
+%table
+  %tr
+    %th Subject
+    %th Profesor
+    %th
+    %th
+    %th
+
+  - @asignaturas.each do |asignatura|
+    %tr
+      %td= asignatura.subject
+      %td= asignatura.profesor
+      %td= link_to 'Show', asignatura
+      %td= link_to 'Edit', edit_asignatura_path(asignatura)
+      %td= link_to 'Destroy', asignatura, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Asignatura', new_asignatura_path

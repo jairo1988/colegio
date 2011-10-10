@@ -1,0 +1,19 @@
+%h1 Listing presencia
+
+%table
+  %tr
+    %th Presentado
+    %th
+    %th
+    %th
+
+  - @presencia.each do |presencium|
+    %tr
+      %td= presencium.presentado
+      %td= link_to 'Show', presencium
+      %td= link_to 'Edit', edit_presencium_path(presencium)
+      %td= link_to 'Destroy', presencium, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Presencium', new_presencium_path

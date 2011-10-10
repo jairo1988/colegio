@@ -1,0 +1,13 @@
+= form_for @presencium do |f|
+  -if @presencium.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@presencium.errors.count, "error")} prohibited this presencium from being saved:"
+      %ul
+        - @presencium.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :presentado
+    = f.text_field :presentado
+  .actions
+    = f.submit 'Save'

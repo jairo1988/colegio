@@ -1,4 +1,6 @@
 Colegio::Application.routes.draw do
+  resources :presencia
+
   root :to => 'alumnos#index'
   resources :asignaturas
 

@@ -4,33 +4,18 @@ class CalificacionesController < ApplicationController
   # GET /calificacions.json
   def index
     @calificaciones = @alumno.calificaciones
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @calificacions }
-    end
   end
 
   # GET /calificacions/1
   # GET /calificacions/1.json
   def show
     @calificacion = @alumno.calificaciones.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @calificacion }
-    end
   end
 
   # GET /calificacions/new
   # GET /calificacions/new.json
   def new
     @calificacion = @alumno.calificaciones.build
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @calificacion }
-    end
   end
 
   # GET /calificacions/1/edit
@@ -45,13 +30,11 @@ class CalificacionesController < ApplicationController
 
     respond_to do |format|
       if @calificacion.save
-        format.html { redirect_to @calificacion, notice: 'Calificacion was successfully created.' }
-        format.json { render json: @calificacion, status: :created, location: @calificacion }
+       redirect_to @alumno, notice: 'Calificacion was successfully created.'
       else
-        format.html { render action: "new" }
-        format.json { render json: @calificacion.errors, status: :unprocessable_entity }
+        render action: "new"
       end
-    end
+        end
   end
 
   # PUT /calificacions/1
@@ -62,7 +45,7 @@ class CalificacionesController < ApplicationController
 
     respond_to do |format|
       if @calificacion.update_attributes(params[:calificacion])
-        format.html { redirect_to @calificacion, notice: 'Calificacion was successfully updated.' }
+        format.html { redirect_to @alumno, notice: 'Calificacion was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -77,10 +60,8 @@ class CalificacionesController < ApplicationController
     @calificacion = Calificacion.find(params[:id])
     @calificacion.destroy
 
-    respond_to do |format|
-      format.html { redirect_to calificacions_url }
-      format.json { head :ok }
-    end
+    redirect_to alumno_url(@alumno)
+
   end
 
   private

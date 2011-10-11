@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Presentado:
+  = @presencia.presentado
+
+= link_to 'Edit', edit_presencia_path(@presencia)
+\|
+= link_to 'Back', presencias_path

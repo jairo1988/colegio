@@ -1,12 +1,13 @@
 Colegio::Application.routes.draw do
-  resources :presencia
+  resources :presencias
 
-  root :to => 'alumnos#index'
   resources :asignaturas
 
-  resources :calificacions
+  resources :alumnos do
+    resources :calificaciones
+  end
 
-  resources :alumnos
+  root :to => 'alumnos#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

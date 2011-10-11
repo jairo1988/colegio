@@ -7,6 +7,16 @@
   %b Apellido:
   = @alumno.apellido
 
+%h2 Calificaciones
+%ul
+  - @alumno.calificaciones.each do |calificacion|
+    %li
+      = calificacion.asignatura.subject + ', ' + calificacion.nota.to_s
+      = link_to "mostrar", alumno_calificacion_path(@alumno, calificacion)
+      -#= link_to "mostrar", [@alumno, calificacion]
+      = link_to "editar", edit_alumno_calificacion_path(@alumno, calificacion)
+      -#= link_to "editar", [:edit, @alumno, calificacion]
+
 = link_to 'Edit', edit_alumno_path(@alumno)
 \|
 = link_to 'Back', alumnos_path

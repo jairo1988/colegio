@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111010113002) do
+ActiveRecord::Schema.define(:version => 20111011075122) do
 
   create_table "alumnos", :force => true do |t|
     t.string   "name"
@@ -27,13 +27,15 @@ ActiveRecord::Schema.define(:version => 20111010113002) do
     t.datetime "updated_at"
   end
 
-  create_table "calificacions", :force => true do |t|
-    t.float    "nota"
+  create_table "calificaciones", :force => true do |t|
+    t.decimal  "nota",          :precision => 4, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "alumno_id"
+    t.integer  "asignatura_id"
   end
 
-  create_table "presencia", :force => true do |t|
+  create_table "presencias", :force => true do |t|
     t.string   "presentado"
     t.datetime "created_at"
     t.datetime "updated_at"

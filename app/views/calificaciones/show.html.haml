@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Nota:
+  = @calificacion.nota
+
+= link_to 'Edit', edit_calificacion_path(@calificacion)
+\|
+= link_to 'Back', calificaciones_path

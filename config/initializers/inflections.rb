@@ -8,3 +8,9 @@
 #   inflect.irregular 'person', 'people'
 #   inflect.uncountable %w( fish sheep )
 # end
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.irregular 'presencia', 'presencias'
+  inflect.irregular 'calificacion', 'calificaciones'
+  inflect.irregular 'alumno', 'alumnos'
+  inflect.irregular 'asignatura', 'asignaturas'
+end

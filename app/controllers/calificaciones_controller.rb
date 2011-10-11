@@ -16,11 +16,13 @@ class CalificacionesController < ApplicationController
   # GET /calificacions/new.json
   def new
     @calificacion = @alumno.calificaciones.build
+    @asignaturas = @alumno.asignaturas_restantes
   end
 
   # GET /calificacions/1/edit
   def edit
     @calificacion = @alumno.calificaciones.find(params[:id])
+    @asignaturas = Asignatura.all
   end
 
   # POST /calificacions
@@ -30,9 +32,10 @@ class CalificacionesController < ApplicationController
 
     respond_to do |format|
       if @calificacion.save
-       redirect_to @alumno, notice: 'Calificacion was successfully created.'
+       format.html {redirect_to @alumno, notice: 'Calificacion was successfully created.'}
       else
-        render action: "new"
+        @asignaturas = Asignatura.all
+        format.html {render action: "new"}
       end
         end
   end
@@ -48,6 +51,7 @@ class CalificacionesController < ApplicationController
         format.html { redirect_to @alumno, notice: 'Calificacion was successfully updated.' }
         format.json { head :ok }
       else
+        @asignaturas = Asignatura.all
         format.html { render action: "edit" }
         format.json { render json: @calificacion.errors, status: :unprocessable_entity }
       end

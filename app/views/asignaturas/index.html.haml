@@ -4,18 +4,22 @@
   %tr
     %th Subject
     %th Profesor
-    %th
-    %th
-    %th
+    %th Office
+    %th Telephone
+    %th Email
 
   - @asignaturas.each do |asignatura|
     %tr
       %td= asignatura.subject
       %td= asignatura.profesor
-      %td= link_to 'Show', asignatura
+      %td= asignatura.office
+      %td= asignatura.telephone
+      %td= asignatura.email
+
       %td= link_to 'Edit', edit_asignatura_path(asignatura)
       %td= link_to 'Destroy', asignatura, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
 = link_to 'New Asignatura', new_asignatura_path
+= link_to 'Back', alumnos_path

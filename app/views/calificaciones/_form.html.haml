@@ -6,14 +6,17 @@
         - @calificacion.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :alumno_id
-    = f.text_field :alumno_id
+  -#.field
+    -#= f.label :alumno_id
+    -#= f.text_field :alumno_id
   .field
     = f.label :asignatura_id
-    = f.text_field :asignatura_id
+    = f.collection_select :asignatura_id, @asignaturas, :id, :subject
   .field
     = f.label :nota
     = f.text_field :nota
+  .field
+    = f.label :comentarios
+    = f.text_area :comentarios
   .actions
     = f.submit 'Save'

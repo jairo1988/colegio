@@ -10,14 +10,13 @@
 
   - @asignaturas.each do |asignatura|
     %tr
-      %td= asignatura.subject
+      %td= link_to asignatura.subject, edit_asignatura_path(asignatura)
       %td= asignatura.profesor
       %td= asignatura.office
       %td= asignatura.telephone
-      %td= asignatura.email
+      %td= mail_to asignatura.email
 
-      %td= link_to 'Edit', edit_asignatura_path(asignatura)
-      %td= link_to 'Destroy', asignatura, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to image_tag("destroy.jpg"), asignatura, :confirm => "¿Seguro que quieres eliminar #{asignatura.subject}?", :method => :delete, :title => "Elimina la asignatura"
 
 %br
 

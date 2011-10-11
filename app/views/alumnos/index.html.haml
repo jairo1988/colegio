@@ -10,12 +10,12 @@
 
   - @alumnos.each do |alumno|
     %tr
-      %td= alumno.name
+      %td= link_to alumno.name, edit_alumno_path(alumno)
       %td= alumno.apellido
-      %td= alumno.email
-      %td= link_to 'Show', alumno
-      %td= link_to 'Edit', edit_alumno_path(alumno)
-      %td= link_to 'Destroy', alumno, :confirm => 'Are you sure?', :method => :delete
+      %td= mail_to alumno.email
+
+      %td= link_to image_tag("show.png"), alumnos_path
+      %td= link_to image_tag("destroy.jpg"), alumno, :confirm => "¿Seguro que quieres eliminar al alumno #{alumno.name} #{alumno.apellido}?", :method => :delete, :title => "Eliminar al alumno"
 
 %br
 

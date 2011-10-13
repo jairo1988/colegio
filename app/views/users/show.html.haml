@@ -1,0 +1,13 @@
+%p#notice
+
+%p
+  %b Nombre:
+  = @user.name
+%p
+  %b Apellido:
+  = @user.surname
+%p
+  %b Email:
+  =@user.email
+
+= link_to 'Back', users_path

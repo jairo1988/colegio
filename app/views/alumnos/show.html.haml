@@ -14,8 +14,8 @@
 %ul
   - @alumno.calificaciones.each do |calificacion|
     %li
-      = link_to calificacion.asignatura.subject, alumno_calificacion_path(calificacion) + ', ' + calificacion.nota.to_s
-      -#= link_to "mostrar", alumno_calificacion_path(@alumno, calificacion)
+      -#= link_to calificacion.asignatura.subject, alumno_calificacion_path(calificacion) + ', ' + calificacion.nota.to_s
+      = link_to calificacion.asignatura.subject, alumno_calificacion_path(@alumno, calificacion)
       -#= link_to "mostrar", [@alumno, calificacion]
       = link_to image_tag("edit.png"), edit_alumno_calificacion_path(@alumno, calificacion)
       -#= link_to "editar", [:edit, @alumno, calificacion]

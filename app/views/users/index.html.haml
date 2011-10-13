@@ -1,0 +1,21 @@
+%h1 Usuarios
+
+%table
+  %tr
+    %th Nombre
+    %th Apellidos
+    %th Email
+
+  - @users.each do |user|
+    %tr
+      %td= user.name
+      %td= user.surname
+      %td= user.email
+      %td= link_to image_tag("edit.png"), edit_user_path(user)
+
+
+%br
+= link_to 'Back', alumnos_path
+
+
+

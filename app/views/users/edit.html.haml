@@ -21,7 +21,13 @@
   .field
     =f.label :password_confirmation
     =f.password_field :password_confirmation
-
+  .field
+    = f.label :tipo
+    %br
+    - User::TIPOS_USUARIO.each do |t|
+      = f.radio_button :tipo, t
+      = f.label :tipo, t
+      %br
 
   .actions
     = f.submit 'Save'

@@ -1,14 +1,21 @@
     class User < ActiveRecord::Base
+      TIPOS_USUARIO = ["Alumno", "Profesor", "Administrador"]
+
+
       attr_accessor :password
-      attr_accessible :email, :password, :password_confirmation, :name, :surname
+      attr_accessible :email, :password, :password_confirmation, :name, :surname, :tipo
+
+
 
       before_save :encrypt_password
+
 
 
       validates_confirmation_of :password
       validates_presence_of :password, :on => :create
       validates_presence_of :email
       validates_uniqueness_of :email
+      validates :tipo, :inclusion => TIPOS_USUARIO
 
       def encrypt_password
         if password.present?

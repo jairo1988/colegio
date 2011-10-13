@@ -1,4 +1,4 @@
-%h1 Usuarios
+%h1 Usuarios Registrados
 
 %table
   %tr
@@ -11,7 +11,11 @@
       %td= user.name
       %td= user.surname
       %td= user.email
+
+
+
       %td= link_to image_tag("edit.png"), edit_user_path(user)
+      %td= link_to image_tag("destroy.jpg"), user, :confirm => "¿Seguro que quieres eliminar al usuario #{user.name} #{user.surname}?", :method => :delete, :title => "Eliminar al usuario"
 
 
 %br

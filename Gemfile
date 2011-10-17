@@ -9,7 +9,7 @@ gem 'sqlite3'
 gem 'therubyracer'
 gem 'haml-rails'
 gem 'bcrypt-ruby', :require => 'bcrypt'
-
+gem 'cancan'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

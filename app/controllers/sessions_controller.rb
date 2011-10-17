@@ -1,11 +1,13 @@
     class SessionsController < ApplicationController
       def new
+        @title = "Sign in"
       end
 
       def create
         user = User.authenticate(params[:email], params[:password])
         if user
           session[:user_id] = user.id
+          @title="Sign in"
           redirect_to root_url,
         else
           flash.now.alert = "Invalid email or password"

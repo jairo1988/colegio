@@ -1,24 +1,40 @@
-%h1 Listing asignaturas
+- if signed_in?
+  %h1 Listing asignaturas
 
-%table
-  %tr
-    %th Subject
-    %th Profesor
-    %th Office
-    %th Telephone
-    %th Email
-
-  - @asignaturas.each do |asignatura|
+  %table
     %tr
-      %td= link_to asignatura.subject, edit_asignatura_path(asignatura)
-      %td= asignatura.profesor
-      %td= asignatura.office
-      %td= asignatura.telephone
-      %td= mail_to asignatura.email
+      %th Subject
+      %th Profesor
+      %th Office
+      %th Telephone
+      %th Email
 
-      %td= link_to image_tag("destroy.jpg"), asignatura, :confirm => "¿Seguro que quieres eliminar #{asignatura.subject}?", :method => :delete, :title => "Elimina la asignatura"
+    - @asignaturas.each do |asignatura|
+      %tr
+        %td= link_to asignatura.subject, edit_asignatura_path(asignatura)
+        %td= asignatura.profesor
+        %td= asignatura.office
+        %td= asignatura.telephone
+        %td= mail_to asignatura.email
 
-%br
+        - if current_user && current_user.tipo == "Administrador"
+          %td= link_to image_tag("destroy.jpg"), asignatura, :confirm => "¿Seguro que quieres eliminar #{asignatura.subject}?", :method => :delete, :title => "Elimina la asignatura"
+- else
+  %h1 Listing asignaturas
 
-= link_to 'New Asignatura', new_asignatura_path
-= link_to 'Back', alumnos_path
+  %table
+    %tr
+      %th Subject
+      %th Profesor
+      %th Office
+      %th Telephone
+      %th Email
+
+    - @asignaturas.each do |asignatura|
+      %tr
+        %td= asignatura.subject
+        %td= asignatura.profesor
+        %td= asignatura.office
+        %td= asignatura.telephone
+        %td= mail_to asignatura.email
+

@@ -15,7 +15,7 @@
       validates_presence_of :password, :on => :create
       validates_presence_of :email
       validates_uniqueness_of :email
-      validates :tipo, :inclusion => TIPOS_USUARIO
+      validates :tipo, :inclusion => TIPOS_USUARIO, :allow_nil => true
 
       def encrypt_password
         if password.present?

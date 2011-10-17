@@ -1,14 +1,20 @@
 class UsersController < ApplicationController
+  before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
+before_filter :correct_user, :only => [:edit, :update]
+before_filter :authenticate, :except => [:show, :new, :create]
   def index
+    @title="All users"
     @users=User.all
   end
 
   def new
     @user=User.new
+    @title = "Sign up"
   end
 
   def edit
     @user=User.find(params[:id])
+    @title= "Edit User"
   end
 
  def update
@@ -19,6 +25,7 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'Alumno was successfully updated.' }
         format.json { head :ok }
       else
+        @title= "edit User"
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -41,6 +48,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_url, :notice => "Signed up!"
     else
+      @title = "sign up"
       render "new"
       end
   end
@@ -57,3 +65,14 @@ class UsersController < ApplicationController
 
 
 end
+
+  private
+  def authenticate
+      deny_access unless signed_in?
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+
+      redirect_to(root_path, :notice => "No tienes permiso para modificar este usuario.") unless current_user?(@user) || current_user.tipo == "Administrador"
+    end

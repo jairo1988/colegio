@@ -1,5 +1,5 @@
 class AsignaturasController < ApplicationController
-  # GET /asignaturas
+      # GET /asignaturas
   # GET /asignaturas.json
   def index
     @asignaturas = Asignatura.all
@@ -72,12 +72,14 @@ class AsignaturasController < ApplicationController
   # DELETE /asignaturas/1
   # DELETE /asignaturas/1.json
   def destroy
-    @asignatura = Asignatura.find(params[:id])
-    @asignatura.destroy
+    if current_user.tipo == "Administrador"
+      @asignatura = Asignatura.find(params[:id])
+      @asignatura.destroy
 
-    respond_to do |format|
-      format.html { redirect_to asignaturas_url }
-      format.json { head :ok }
+      respond_to do |format|
+        format.html { redirect_to asignaturas_url }
+        format.json { head :ok }
+      end
     end
   end
 end

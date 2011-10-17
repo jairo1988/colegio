@@ -4,6 +4,7 @@ Colegio::Application.routes.draw do
 
   get "sign_up" => "users#new", :as => "sign_up"
 
+  get "signin" => "sessions#new", :as => "signin"
   resources :users
   resources :sessions
 

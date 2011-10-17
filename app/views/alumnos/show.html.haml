@@ -17,15 +17,17 @@
       -#= link_to calificacion.asignatura.subject, alumno_calificacion_path(calificacion) + ', ' + calificacion.nota.to_s
       = link_to calificacion.asignatura.subject, alumno_calificacion_path(@alumno, calificacion)
       -#= link_to "mostrar", [@alumno, calificacion]
-      = link_to image_tag("edit.png"), edit_alumno_calificacion_path(@alumno, calificacion)
-      -#= link_to "editar", [:edit, @alumno, calificacion]
+      - if current_user && (["Administrador", "Profesor"].include? current_user.tipo)
 
-      = link_to image_tag("destroy.jpg"),alumno_calificacion_path(@alumno,calificacion), :confirm => "¿Seguro que quieres eliminar #{calificacion.asignatura.subject}?", :method => :delete, :title => "Elimina la asignatura"
+        = link_to image_tag("edit.png"), edit_alumno_calificacion_path(@alumno, calificacion)
+
+        = link_to image_tag("destroy.jpg"),alumno_calificacion_path(@alumno,calificacion), :confirm => "¿Seguro que quieres eliminar #{calificacion.asignatura.subject}?", :method => :delete, :title => "Elimina la asignatura"
 
 
+      - if current_user && (["Administrador", "Profesor"].include? current_user.tipo)
 
-= link_to "Nueva calificación", new_alumno_calificacion_path(@alumno)
+        = link_to "Nueva calificación", new_alumno_calificacion_path(@alumno)
 \|
 = link_to 'Edit', edit_alumno_path(@alumno)
-\|
-= link_to 'Back', alumnos_path
+
+

@@ -1,0 +1,17 @@
+<header>
+ <%= link_to image_tag("rails.png"), root_path %>
+  <nav class="round">
+    <ul>
+      <li><%= link_to "Home", alumnos_path %></li>
+      <li><%= link_to "Asignaturas", asignaturas_path %></li>
+      <% if signed_in? %>
+        <li><%= link_to "Users", users_path %></li>
+        <li><%= link_to "New Alumno",new_alumno_path  %></li>
+      <li><%= link_to "Log out", log_out_path%></li>
+      <% else %>
+      <li><%= link_to "Log in", log_in_path%></li>
+      <li><%= link_to "Registrarse", sign_up_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+</header>

@@ -13,13 +13,10 @@
       %td= user.email
 
 
+    - if current_user && current_user.tipo == "Administrador"
 
       %td= link_to image_tag("edit.png"), edit_user_path(user)
       %td= link_to image_tag("destroy.jpg"), user, :confirm => "¿Seguro que quieres eliminar al usuario #{user.name} #{user.surname}?", :method => :delete, :title => "Eliminar al usuario"
-
-
-%br
-= link_to 'Back', alumnos_path
 
 
 

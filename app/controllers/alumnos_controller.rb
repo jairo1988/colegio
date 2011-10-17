@@ -2,6 +2,7 @@ class AlumnosController < ApplicationController
   # GET /alumnos
   # GET /alumnos.json
   def index
+    @title = "All Alumnos"
     @alumnos = Alumno.all
 
     respond_to do |format|
@@ -25,6 +26,7 @@ class AlumnosController < ApplicationController
   # GET /alumnos/new.json
   def new
     @alumno = Alumno.new
+    @title= "Sign up"
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +37,7 @@ class AlumnosController < ApplicationController
   # GET /alumnos/1/edit
   def edit
     @alumno = Alumno.find(params[:id])
+    @title="Edit User"
   end
 
   # POST /alumnos
@@ -47,6 +50,7 @@ class AlumnosController < ApplicationController
         format.html { redirect_to @alumno, notice: 'Alumno was successfully created.' }
         format.json { render json: @alumno, status: :created, location: @alumno }
       else
+        @title="Sign Up"
         format.html { render action: "new" }
         format.json { render json: @alumno.errors, status: :unprocessable_entity }
       end
@@ -63,6 +67,7 @@ class AlumnosController < ApplicationController
         format.html { redirect_to @alumno, notice: 'Alumno was successfully updated.' }
         format.json { head :ok }
       else
+        @title="Edit User"
         format.html { render action: "edit" }
         format.json { render json: @alumno.errors, status: :unprocessable_entity }
       end

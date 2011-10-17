@@ -1,6 +1,7 @@
     class User < ActiveRecord::Base
       TIPOS_USUARIO = ["Alumno", "Profesor", "Administrador"]
 
+      has_one :alumno
 
       attr_accessor :password
       attr_accessible :email, :password, :password_confirmation, :name, :surname, :tipo

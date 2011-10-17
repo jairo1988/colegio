@@ -24,10 +24,10 @@
         = link_to image_tag("destroy.jpg"),alumno_calificacion_path(@alumno,calificacion), :confirm => "¿Seguro que quieres eliminar #{calificacion.asignatura.subject}?", :method => :delete, :title => "Elimina la asignatura"
 
 
-      - if current_user && (["Administrador", "Profesor"].include? current_user.tipo)
-
-        = link_to "Nueva calificación", new_alumno_calificacion_path(@alumno)
+- if current_user && (["Administrador", "Profesor"].include? current_user.tipo)
+  = link_to "Nueva calificación", new_alumno_calificacion_path(@alumno)
 \|
 = link_to 'Edit', edit_alumno_path(@alumno)
-
+\|
+= link_to "Back", alumnos_path
 

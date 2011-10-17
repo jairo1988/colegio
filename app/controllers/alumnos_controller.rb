@@ -1,4 +1,5 @@
 class AlumnosController < ApplicationController
+  before_filter :correct_user, :only => [:edit, :update]
   # GET /alumnos
   # GET /alumnos.json
   def index
@@ -86,3 +87,10 @@ class AlumnosController < ApplicationController
     end
   end
 end
+
+private
+ def correct_user
+      @user = User.find(params[:id])
+
+      redirect_to(root_path, :notice => "No tienes permiso para modificar este usuario.") unless current_user?(@user) || current_user.tipo == "Administrador"
+    end

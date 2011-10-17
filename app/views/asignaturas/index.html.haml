@@ -1,4 +1,5 @@
-- if signed_in?
+- if current_user && (["Administrador", "Profesor"].include?current_user.tipo)
+
   %h1 Listing asignaturas
 
   %table

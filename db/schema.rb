@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20111017154244) do
     t.string   "name"
     t.string   "surname"
     t.string   "tipo"
+    t.integer  "alumno_id"
   end
 
 end

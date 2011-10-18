@@ -1,15 +1,14 @@
     class User < ActiveRecord::Base
       TIPOS_USUARIO = ["Alumno", "Profesor", "Administrador"]
 
-      has_one :alumno
+      belongs_to :alumno
 
       attr_accessor :password
-      attr_accessible :email, :password, :password_confirmation, :name, :surname, :tipo
+      attr_accessible :email, :password, :password_confirmation, :name, :surname, :tipo, :alumno_id
 
 
 
       before_save :encrypt_password
-
 
 
       validates_confirmation_of :password
@@ -17,6 +16,17 @@
       validates_presence_of :email
       validates_uniqueness_of :email
       validates :tipo, :inclusion => TIPOS_USUARIO, :allow_nil => true
+
+      def alumnos_restantes
+        ids = Alumno.all.map{|a| a.id}
+        ids_a_eliminar=User.all.map{|a| a.alumno_id}.compact
+        ids_a_mostrar= ids - ids_a_eliminar
+        ids_a_mostrar << self.alumno_id
+        ids_a_mostrar.compact
+        Alumno.find(ids_a_mostrar)
+      end
+
+
 
       def encrypt_password
         if password.present?

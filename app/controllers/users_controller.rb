@@ -10,11 +10,13 @@ before_filter :authenticate, :except => [:show, :new, :create]
   def new
     @user=User.new
     @title = "Sign up"
+    @alumnos=@user.alumnos_restantes
   end
 
   def edit
     @user=User.find(params[:id])
     @title= "Edit User"
+    @alumnos=@user.alumnos_restantes
   end
 
  def update

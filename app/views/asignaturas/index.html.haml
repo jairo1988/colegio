@@ -18,8 +18,10 @@
         %td= asignatura.telephone
         %td= mail_to asignatura.email
 
-        - if current_user && current_user.tipo == "Administrador"
-          %td= link_to image_tag("destroy.jpg"), asignatura, :confirm => "¿Seguro que quieres eliminar #{asignatura.subject}?", :method => :delete, :title => "Elimina la asignatura"
+      - if current_user && current_user.tipo == "Administrador"
+        %td= link_to image_tag("destroy.jpg"), asignatura, :confirm => "¿Seguro que quieres eliminar #{asignatura.subject}?", :method => :delete, :title => "Elimina la asignatura"
+    - if current_user && current_user.tipo == "Administrador"
+      = link_to 'Nuevo Profesor', new_asignatura_path(@asignatura)
 - else
   %h1 Listing asignaturas
 

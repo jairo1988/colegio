@@ -1,8 +1,7 @@
 class Alumno < ActiveRecord::Base
   has_many :calificaciones
   has_many :asignaturas, :through => :calificaciones
-
-  belongs_to :user
+  has_one :user
 
   validates :name, :presence => true
   validates :apellido, :presence => true

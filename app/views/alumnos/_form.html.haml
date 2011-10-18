@@ -15,5 +15,17 @@
   .field
     =f.label :email
     =f.text_field :email
+  .field
+    =f.label :emailuji
+    =f.text_field :emailuji
+
+  = f.fields_for :user do |form_user|
+    .field
+      = form_user.label :password
+      = form_user.password_field :password
+    .field
+      = form_user.label :password_confirmation
+      = form_user.password_field :password_confirmation
+
   .actions
     = f.submit 'Save'

@@ -9,13 +9,15 @@
 
 
       before_save :encrypt_password
-
-
+      #before_validation :asignar_nombre
       validates_confirmation_of :password
       validates_presence_of :password, :on => :create
       validates_presence_of :email
       validates_uniqueness_of :email
       validates :tipo, :inclusion => TIPOS_USUARIO, :allow_nil => true
+       email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+
 
       def alumnos_restantes
         ids = Alumno.all.map{|a| a.id}
@@ -25,8 +27,6 @@
         ids_a_mostrar.compact
         Alumno.find(ids_a_mostrar)
       end
-
-
 
       def encrypt_password
         if password.present?

@@ -24,8 +24,8 @@
   .field
     = f.label :password_confirmation
     = f.password_field :password_confirmation
-  .field
-    = f.label :alumno_id
-    = f.collection_select :alumno_id, @alumnos, :id, :name, :prompt => ""
+  -#.field
+    -#= f.label :alumno_id
+    -#= f.collection_select :alumno_id, @alumnos, :id, :name, :prompt => ""
   .actions
     = f.submit 'Save'

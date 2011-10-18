@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111017154244) do
+ActiveRecord::Schema.define(:version => 20111018131303) do
 
   create_table "alumnos", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20111017154244) do
     t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"
+    t.string   "emailuji"
   end
 
   create_table "asignaturas", :force => true do |t|

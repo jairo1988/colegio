@@ -1,3 +1,5 @@
+- administrador = current_user && current_user.tipo == "Administrador"
+
 %h1 Usuarios Registrados
 
 %table
@@ -13,10 +15,10 @@
       %td= user.email
 
 
-    - if current_user && current_user.tipo == "Administrador"
-
-      %td= link_to image_tag("edit.png"), edit_user_path(user)
-      %td= link_to image_tag("destroy.jpg"), user, :confirm => "¿Seguro que quieres eliminar al usuario #{user.name} #{user.surname}?", :method => :delete, :title => "Eliminar al usuario"
-
+      - if administrador
+        %td= link_to image_tag("edit.png"), edit_user_path(user)
+        %td= link_to image_tag("destroy.jpg"), user, :confirm => "¿Seguro que quieres eliminar al usuario #{user.name} #{user.surname}?", :method => :delete, :title => "Eliminar al usuario"
+- if administrador
+  = link_to 'New User', new_user_path
 
 

@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20111017154244) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
+    t.string   "password_hash"
+    t.string   "password_salt"
   end
 
   create_table "asignaturas", :force => true do |t|

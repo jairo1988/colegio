@@ -5,6 +5,10 @@ class Alumno < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :apellido, :presence => true
+  validates :email, :presence =>true
+  validates_uniqueness_of :email
+
+
 
 
 

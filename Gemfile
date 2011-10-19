@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.1'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -19,8 +19,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'annotate'
-
+gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 # Use unicorn as the web server
 # gem 'unicorn'
 

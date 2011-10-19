@@ -30,3 +30,16 @@ def asignaturas_restantes
   ids_a_mostrar = ids - ids_a_eliminar
   Asignatura.find(ids_a_mostrar)
 end
+# == Schema Information
+#
+# Table name: alumnos
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  apellido   :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  email      :string(255)
+#  emailuji   :string(255)
+#
+

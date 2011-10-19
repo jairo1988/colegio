@@ -7,12 +7,14 @@
     %th Nombre
     %th Apellidos
     %th Email
+    %th Tipo
 
   - @users.each do |user|
     %tr
       %td= user.name
       %td= user.surname
-      %td= user.email
+      %td= mail_to user.email
+      %td= user.tipo
 
 
       - if administrador

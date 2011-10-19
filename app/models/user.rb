@@ -2,6 +2,7 @@
       TIPOS_USUARIO = ["Alumno", "Profesor", "Administrador"]
 
       belongs_to :alumno
+      belongs_to :profesor
 
       attr_accessor :password
       attr_accessible :email, :password, :password_confirmation, :name, :surname, :tipo, :alumno_id
@@ -15,9 +16,6 @@
       validates_presence_of :email
       validates_uniqueness_of :email
       validates :tipo, :inclusion => TIPOS_USUARIO, :allow_nil => true
-       email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-
-
 
       def alumnos_restantes
         ids = Alumno.all.map{|a| a.id}

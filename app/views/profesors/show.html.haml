@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @profesor.name
+%p
+  %b Apellido:
+  = @profesor.apellido
+%p
+  %b Email:
+  = @profesor.email
+%p
+  %b Emailuji:
+  = @profesor.emailuji
+%p
+  %b Office:
+  = @profesor.office
+%p
+  %b Telephone:
+  = @profesor.telephone
+
+= link_to 'Edit', edit_profesor_path(@profesor)
+\|
+= link_to 'Back', profesors_path

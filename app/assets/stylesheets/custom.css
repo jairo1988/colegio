@@ -1,9 +1,13 @@
 .container {
+  width: 890px;
+}
+
+.container.pagina.users {
   width: 710px;
 }
 
 body {
-  background: #ccc;
+  background: #ccd;
 }
 
 header {

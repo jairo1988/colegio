@@ -1,0 +1,37 @@
+= form_for @profesor do |f|
+  -if @profesor.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@profesor.errors.count, "error")} prohibited this profesor from being saved:"
+      %ul
+        - @profesor.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :apellido
+    = f.text_field :apellido
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :emailuji
+    = f.text_field :emailuji
+  .field
+    = f.label :office
+    = f.text_field :office
+  .field
+    = f.label :telephone
+    = f.text_field :telephone
+
+  = f.fields_for :user do |form_user|
+    .field
+      = form_user.label :password
+      = form_user.password_field :password
+    .field
+      = form_user.label :password_confirmation
+      = form_user.password_field :password_confirmation
+
+  .actions
+    = f.submit 'Save'

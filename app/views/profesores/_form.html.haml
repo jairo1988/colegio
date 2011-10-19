@@ -1,9 +1,9 @@
-= form_for @alumno do |f|
-  -if @alumno.errors.any?
+= form_for @profesor do |f|
+  -if @profesor.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@alumno.errors.count, "error")} prohibited this alumno from being saved:"
+      %h2= "#{pluralize(@profesor.errors.count, "error")} prohibited this profesor from being saved:"
       %ul
-        - @alumno.errors.full_messages.each do |msg|
+        - @profesor.errors.full_messages.each do |msg|
           %li= msg
 
   .field
@@ -13,11 +13,17 @@
     = f.label :apellido
     = f.text_field :apellido
   .field
-    =f.label :email
-    =f.text_field :email
+    = f.label :email
+    = f.text_field :email
   .field
-    =f.label :emailuji
-    =f.text_field :emailuji
+    = f.label :emailuji
+    = f.text_field :emailuji
+  .field
+    = f.label :oficina
+    = f.text_field :oficina
+  .field
+    = f.label :telefono
+    = f.text_field :telefono
 
   = f.fields_for :user do |form_user|
     .field

@@ -7,20 +7,16 @@
           %li= msg
 
   .field
-    = f.label :subject
-    = f.text_field :subject
+    = f.label :asigntura
+    = f.text_field :asignatura
   .field
-    = f.label :profesor
-    = f.text_field :profesor
+    = f.label :temario
+    = f.text_field :temario
   .field
-    =f.label :office
-    =f.text_field :office
-  .field
-    =f.label :telephone
-    =f.text_field :telephone
-  .field
-    =f.label :email
-    =f.text_field :email
+    = f.label :profesor_id
+    = f.collection_select :profesor_id, @profesors, :id, :nombre
+  -#.field
+    = f.date_select("asignaturas","diaexamen", :default => {:day =>20})
 
   .actions
     = f.submit 'Save'

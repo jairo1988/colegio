@@ -1,0 +1,28 @@
+%h1 Listing profesors
+
+%table
+  %tr
+    %th Nombre
+    %th Apellido
+    %th Email
+    %th Emailuji
+    %th Oficina
+    %th Telefono
+    %th
+    %th
+    %th
+
+  - @profesores.each do |profesor|
+    %tr
+      %td= profesor.nombre
+      %td= profesor.apellido
+      %td= mail_to profesor.email
+      %td= mail_to profesor.emailuji
+      %td= profesor.oficina
+      %td= profesor.telefono
+      %td= link_to image_tag("show.png"), profesor
+      %td= link_to image_tag("edit.png"), edit_profesor_path(profesor)
+      - if current_user && current_user.tipo == "Administrador"
+        %td= link_to image_tag("destroy.jpg"), profesor, :confirm => "¿Seguro que quieres eliminar al profesor #{profesor.nombre} #{profesor.apellido}?", :method => :delete, :title => "Eliminar al profesor"
+%br
+

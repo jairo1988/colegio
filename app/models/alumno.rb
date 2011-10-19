@@ -3,7 +3,7 @@ class Alumno < ActiveRecord::Base
   has_many :asignaturas, :through => :calificaciones
   has_one :user
 
-  validates :name, :presence => true
+  validates :nombre, :presence => true
   validates :apellido, :presence => true
   validates :email, :presence =>true, :format => { :with => /\A[a-zA-Z0-9_.]+@[a-z.]+\z/i,  :message => "The correct email format is name@server.com"}
   validates :emailuji, :presence =>true, :format => { :with => /\A[a-zA-Z0-9_.]+@[a-z.]+\z/i, :message => "The correct email format is name@server.com"}

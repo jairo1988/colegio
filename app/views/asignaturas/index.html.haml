@@ -1,41 +1,25 @@
-- if current_user && (["Administrador", "Profesor"].include?current_user.tipo)
-
-  %h1 Listing asignaturas
-
-  %table
-    %tr
-      %th Subject
-      %th Profesor
-      %th Office
-      %th Telephone
-      %th Email
-
-    - @asignaturas.each do |asignatura|
-      %tr
-        %td= link_to asignatura.subject, edit_asignatura_path(asignatura)
-        %td= asignatura.profesor
-        %td= asignatura.office
-        %td= asignatura.telephone
-        %td= mail_to asignatura.email
-
-      - if current_user && current_user.tipo == "Administrador"
-        %td= link_to image_tag("destroy.jpg"), asignatura, :confirm => "¿Seguro que quieres eliminar #{asignatura.subject}?", :method => :delete, :title => "Elimina la asignatura"
-- else
-  %h1 Listing asignaturas
-
-  %table
-    %tr
-      %th Subject
-      %th Profesor
-      %th Office
-      %th Telephone
-      %th Email
+%h1 Listing asignaturas
+%table
+  %tr
+    %th Asignatura
+    %th Temario
+    %th Profesor
+    %th Día Examen
+    %th Hora Examen
+    %th
+    %th
 
     - @asignaturas.each do |asignatura|
       %tr
-        %td= asignatura.subject
-        %td= asignatura.profesor
-        %td= asignatura.office
-        %td= asignatura.telephone
-        %td= mail_to asignatura.email
+        %td= asignatura.asignatura
+        %td= asignatura.temario
+        %td= asignatura.profesor.nombre
+        %td= asignatura.diaexamen
+        %td= asignatura.horaexamen
+
+        - if current_user && current_user.tipo == "Administrador"
+          %td= link_to image_tag("edit.png") , edit_asignatura_path(asignatura)
+          %td= link_to image_tag("destroy.jpg"), asignatura,
+            :confirm => "¿Seguro que quieres eliminar #{asignatura.asignatura}?",
+            :method => :delete, :title => "Elimina la asignatura"
 

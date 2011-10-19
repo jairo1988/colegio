@@ -1,9 +1,9 @@
-class ProfesorsController < ApplicationController
+class ProfesoresController < ApplicationController
   before_filter :correct_user, :only => [:edit,:update]
   # GET /profesors
   # GET /profesors.json
   def index
-    @profesors = Profesor.all
+    @profesores = Profesor.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class ProfesorsController < ApplicationController
   # GET /profesors/1.json
   def show
     @profesor = Profesor.find(params[:id])
-    @profesors=Profesor.all
+    @profesores=Profesor.all
 
     respond_to do |format|
       format.html # show.html.erb

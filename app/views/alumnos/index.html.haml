@@ -1,7 +1,7 @@
 %h1 Listing alumnos
 %table
   %tr
-    %th Name
+    %th Nombre
     %th Apellido
     %th Email
     %th
@@ -12,15 +12,15 @@
     - if current_user && (["Administrador", "Profesor"].include? current_user.tipo)
       - @alumnos.each do |alumno|
         %tr
-          %td= link_to alumno.name, edit_alumno_path(alumno)
+          %td= link_to alumno.nombre, edit_alumno_path(alumno)
           %td= alumno.apellido
           %td= mail_to alumno.email
           %td= link_to image_tag("show.png"), alumno
-          %td= link_to image_tag("destroy.jpg"), alumno, :confirm =>   "¿Seguro que quieres eliminar al alumno #{alumno.name} #{alumno.apellido}?", :method => :delete, :title => "Eliminar al alumno"
+          %td= link_to image_tag("destroy.jpg"), alumno, :confirm =>   "¿Seguro que quieres eliminar al alumno #{alumno.nombre} #{alumno.apellido}?", :method => :delete, :title => "Eliminar al alumno"
     - else
       - @alumnos.each do |alumno|
         %tr
-          %td= alumno.name
+          %td= alumno.nombre
           %td= alumno.apellido
           %td= mail_to alumno.email
           %td= link_to image_tag("show.png"), alumno
@@ -28,7 +28,7 @@
   - else
     - @alumnos.each do |alumno|
       %tr
-        %td= alumno.name
+        %td= alumno.nombre
         %td= alumno.apellido
         %td= mail_to alumno.email
 

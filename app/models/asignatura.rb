@@ -1,11 +1,10 @@
 class Asignatura < ActiveRecord::Base
-  validates :subject, :presence =>true
-  validates :profesor, :presence =>true
-  #validates :profesor_id
+  validates :asignatura, :presence =>true
+  validates :profesor_id, :presence =>true
 
 
   has_many :calificaciones
-  belongs_to :profesores
+  belongs_to :profesor
 end
 # == Schema Information
 #

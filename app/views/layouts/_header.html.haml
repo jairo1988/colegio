@@ -11,7 +11,7 @@
             = link_to "Users", users_path
           - if current_user && (["Administrador","Profesor"].include?current_user.tipo)
             %li
-              = link_to "Profesores", profesors_path
+              = link_to "Profesores", profesores_path
             %li
               = link_to "New Alumno",new_alumno_path
           - if current_user && current_user.tipo == "Administrador"

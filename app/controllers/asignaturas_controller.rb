@@ -14,7 +14,7 @@ class AsignaturasController < ApplicationController
   # GET /asignaturas/1.json
   def show
     @asignatura = Asignatura.find(params[:id])
-
+    @profesors=Profesor.all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @asignatura }
@@ -25,7 +25,7 @@ class AsignaturasController < ApplicationController
   # GET /asignaturas/new.json
   def new
     @asignatura = Asignatura.new
-
+    @profesors=Profesor.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @asignatura }
@@ -35,6 +35,7 @@ class AsignaturasController < ApplicationController
   # GET /asignaturas/1/edit
   def edit
     @asignatura = Asignatura.find(params[:id])
+    @profesors=Profesor.all
   end
 
   # POST /asignaturas
@@ -47,6 +48,7 @@ class AsignaturasController < ApplicationController
         format.html { redirect_to @asignatura, notice: 'Asignatura was successfully created.' }
         format.json { render json: @asignatura, status: :created, location: @asignatura }
       else
+        @profesors=Profesor.all
         format.html { render action: "new" }
         format.json { render json: @asignatura.errors, status: :unprocessable_entity }
       end
@@ -63,6 +65,7 @@ class AsignaturasController < ApplicationController
         format.html { redirect_to @asignatura, notice: 'Asignatura was successfully updated.' }
         format.json { head :ok }
       else
+        @profesors=Profesor.all
         format.html { render action: "edit" }
         format.json { render json: @asignatura.errors, status: :unprocessable_entity }
       end

@@ -12,22 +12,21 @@ class Alumno < ActiveRecord::Base
   accepts_nested_attributes_for :user
 
 
-
   before_validation :asigna_nombre_usuario, :if => Proc.new { |alumno| alumno.new_record? }
 
   protected
   def asigna_nombre_usuario
-      self.user.name = self.name
-      self.user.surname = self.apellido
-      self.user.email = self.emailuji
-    end
+    self.user.name = self.name
+    self.user.surname = self.apellido
+    self.user.email = self.emailuji
   end
+end
 
 
-  #TODO: Mostrar solo las que el alumno no tiene
-  def asignaturas_restantes
-    ids = Asignatura.all.map{|a| a.id}
-    ids_a_eliminar = asignaturas.map{|a| a.id}
-    ids_a_mostrar = ids - ids_a_eliminar
-    Asignatura.find(ids_a_mostrar)
-  end
+#TODO: Mostrar solo las que el alumno no tiene
+def asignaturas_restantes
+  ids = Asignatura.all.map{|a| a.id}
+  ids_a_eliminar = asignaturas.map{|a| a.id}
+  ids_a_mostrar = ids - ids_a_eliminar
+  Asignatura.find(ids_a_mostrar)
+end

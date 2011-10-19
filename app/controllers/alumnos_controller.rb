@@ -88,11 +88,14 @@ class AlumnosController < ApplicationController
       format.json { head :ok }
     end
   end
-end
 
 private
- def correct_user
+  def correct_user
     @alumno = Alumno.find(params[:id])
-
-      redirect_to(root_path, :notice => "No tienes permiso para modificar este usuario.") unless current_user.alumno == @alumno || current_user.tipo == "Administrador"
+    if current_user.alumno != @alumno || current_user.tipo == "Administrador"
+      redirect_to(root_path, :notice => "No tienes permiso para modificar este usuario.")
     end
+  end
+
+end
+

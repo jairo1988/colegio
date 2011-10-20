@@ -1,7 +1,7 @@
 class Profesor < ActiveRecord::Base
   before_validation :asigna_nombre_profesor, :if => Proc.new {|profesor|profesor.new_record?}
   has_many :asignaturas
-  has_one :user
+  has_one :user, :as => :logable
   has_many :calificaciones
   validates :nombre, :presence => true
   validates :apellido, :presence => true

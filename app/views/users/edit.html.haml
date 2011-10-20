@@ -23,14 +23,14 @@
     =f.password_field :password_confirmation
   .field
     = f.label :alumno_id
-    = f.collection_select :alumno_id, @alumnos, :id, :name, :prompt => true
-  .field
-    = f.label :tipo
-    %br
-    - User::TIPOS_USUARIO.each do |t|
-      = f.radio_button :tipo, t
-      = f.label :tipo, t
-      %br
+    = f.collection_select :alumno_id, @alumnos, :id, :nombre, :prompt => true
+  -#.field
+    -#= f.label :tipo
+    -#%br
+    -#- User::TIPOS_USUARIO.each do |t|
+      -#= f.radio_button :tipo, t
+      -#= f.label :tipo, t
+      -#%br
 
   .actions
     = f.submit 'Save'

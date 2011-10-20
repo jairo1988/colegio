@@ -1,7 +1,7 @@
 class Alumno < ActiveRecord::Base
   has_many :calificaciones
   has_many :asignaturas, :through => :calificaciones
-  has_one :user
+  has_one :user, :as => :logable
 
   validates :nombre, :presence => true
   validates :apellido, :presence => true
@@ -9,6 +9,7 @@ class Alumno < ActiveRecord::Base
   validates :emailuji, :presence =>true, :format => { :with => /\A[a-zA-Z0-9_.]+@[a-z.]+\z/i, :message => "The correct email format is name@server.com"}
   validates_uniqueness_of :email
   validates_uniqueness_of :emailuji
+
   accepts_nested_attributes_for :user
 
 
@@ -22,7 +23,7 @@ end
 
   protected
   def asigna_nombre_usuario
-    self.user.name = self.name
+    self.user.name = self.nombre
     self.user.surname = self.apellido
     self.user.email = self.emailuji
   end

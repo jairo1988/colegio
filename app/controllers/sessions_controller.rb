@@ -7,7 +7,7 @@
         user = User.authenticate(params[:email], params[:password])
         if user
           session[:user_id] = user.id
-          redirect_to root_url, :notice => "Logged in!i"
+          redirect_to root_url, :notice => "Conexion establecida satisfactoriamente ^.^"
         else
           flash.now.alert = "Invalid email or password"
           render "new"
@@ -16,6 +16,6 @@
 
       def destroy
         session[:user_id]=nil
-        redirect_to root_url, :notice => "Logged out!"
+        redirect_to root_url, :notice => "Desconectado de manera segura ^.^ "
       end
     end

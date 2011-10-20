@@ -16,20 +16,24 @@ class CalificacionesController < ApplicationController
   # GET /calificacions/new.json
   def new
     @calificacion = @alumno.calificaciones.build
-    if current_user.alumno
+    if current_user.alumno?
       @asignaturas = @alumno.asignaturas_restantes
     else
-      @asignaturas = current_user.profesor.asignaturas
+      if profesor
+        @asignaturas = profesor.asignaturas
+      elsif current_user.administrador?
+        @asignaturas = Asignatura.all
+      end
     end
   end
 
   # GET /calificacions/1/edit
   def edit
     @calificacion = @alumno.calificaciones.find(params[:id])
-    if current_user.alumno
+    if current_user.alumno?
       @asignaturas=@alumno.asignaturas_restantes
     else
-      @asignaturas = current_user.profesor.asignaturas
+      @asignaturas = profesor.asignaturas if profesor
     end
   end
 
@@ -79,5 +83,9 @@ class CalificacionesController < ApplicationController
   private
   def obtener_alumno
     @alumno = Alumno.find(params[:alumno_id])
+  end
+
+  def profesor
+    current_user.logable if current_user.profesor?
   end
 end

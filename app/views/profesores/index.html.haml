@@ -22,7 +22,7 @@
       %td= profesor.telefono
       %td= link_to image_tag("show.png"), profesor
       %td= link_to image_tag("edit.png"), edit_profesor_path(profesor)
-      - if current_user && current_user.tipo == "Administrador"
+      - if current_user && current_user.role == "Administrador"
         %td= link_to image_tag("destroy.jpg"), profesor, :confirm => "¿Seguro que quieres eliminar al profesor #{profesor.nombre} #{profesor.apellido}?", :method => :delete, :title => "Eliminar al profesor"
 %br
 

@@ -78,13 +78,13 @@ class ProfesoresController < ApplicationController
     @profesor.destroy
 
     respond_to do |format|
-      format.html { redirect_to profesors_url }
+      format.html { redirect_to profesores_url }
       format.json { head :ok }
     end
   end
   private
   def correct_user
     @profesor=Profesor.find(params[:id])
-    redirect_to(profesores_path,:notice => "No tienes permisos para modificar este profesor") unless current_user?(@profesor.user) || current_user.tipo == "Administrador"
+    redirect_to(profesores_path,:notice => "No tienes permisos para modificar este profesor") unless current_user?(@profesor.user) || current_user.role == "Administrador"
   end
 end

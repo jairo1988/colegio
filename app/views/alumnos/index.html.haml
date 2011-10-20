@@ -9,7 +9,7 @@
 
   - if signed_in?
 
-    - if current_user && (["Administrador", "Profesor"].include? current_user.tipo)
+    - if current_user && (["Administrador", "Profesor"].include? current_user.role)
       - @alumnos.each do |alumno|
         %tr
           %td= link_to alumno.nombre, edit_alumno_path(alumno)

@@ -1,21 +1,20 @@
     class User < ActiveRecord::Base
-      TIPOS_USUARIO = ["Alumno", "Profesor", "Administrador"]
+      #TIPOS_USUARIO = ["Alumno", "Profesor", "Administrador"]
 
-      belongs_to :alumno
-      belongs_to :profesor
+      belongs_to :logable, :polymorphic => true
 
       attr_accessor :password
-      attr_accessible :email, :password, :password_confirmation, :name, :surname, :tipo, :alumno_id
+      attr_accessible :email, :password, :password_confirmation, :name, :surname, :alumno_id #:tipo
+
 
 
 
       before_save :encrypt_password
-      #before_validation :asignar_nombre
       validates_confirmation_of :password
       validates_presence_of :password, :on => :create
       validates_presence_of :email
       validates_uniqueness_of :email
-      validates :tipo, :inclusion => TIPOS_USUARIO, :allow_nil => true
+      #validates :tipo, :inclusion => TIPOS_USUARIO, :allow_nil => true
 
       def alumnos_restantes
         ids = Alumno.all.map{|a| a.id}
@@ -40,6 +39,23 @@
            nil
          end
       end
+
+      def role
+        self.logable_type || "Administrador"
+      end
+
+      def alumno?
+        role == "Alumno"
+      end
+
+      def profesor?
+        role == "Profesor"
+      end
+
+      def administrador?
+        role == "Administrador"
+      end
+
     end
 # == Schema Information
 #

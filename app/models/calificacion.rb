@@ -1,5 +1,6 @@
 class Calificacion < ActiveRecord::Base
     validates :nota, :presence => true
+    validates :nota, :numericality =>{:greater_than_or_equal_to => 0, :less_than_or_equal_to => 10}
     belongs_to :alumno
     belongs_to :asignatura
     belongs_to :profesor

@@ -92,7 +92,7 @@ class AlumnosController < ApplicationController
 private
   def correct_user
     @alumno = Alumno.find(params[:id])
-    if current_user.alumno != @alumno || current_user.tipo == "Administrador"
+    if !(current_user?(@alumno.user) || current_user.role == "Administrador")
       redirect_to(root_path, :notice => "No tienes permiso para modificar este usuario.")
     end
   end

@@ -16,13 +16,21 @@ class CalificacionesController < ApplicationController
   # GET /calificacions/new.json
   def new
     @calificacion = @alumno.calificaciones.build
-    @asignaturas = @alumno.asignaturas_restantes
+    if current_user.alumno
+      @asignaturas = @alumno.asignaturas_restantes
+    else
+      @asignaturas = current_user.profesor.asignaturas
+    end
   end
 
   # GET /calificacions/1/edit
   def edit
     @calificacion = @alumno.calificaciones.find(params[:id])
-    @asignaturas = Asignatura.all
+    if current_user.alumno
+      @asignaturas=@alumno.asignaturas_restantes
+    else
+      @asignaturas = current_user.profesor.asignaturas
+    end
   end
 
   # POST /calificacions

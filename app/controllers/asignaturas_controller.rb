@@ -1,4 +1,5 @@
 class AsignaturasController < ApplicationController
+    before_filter :correct_user, :only => [:edit,:update]
       # GET /asignaturas
   # GET /asignaturas.json
   def index
@@ -85,4 +86,13 @@ class AsignaturasController < ApplicationController
       end
     end
   end
+private
+  def correct_user
+    @asignatura = Asignatura.find(params[:id])
+    if current_user.profesor != @asignatura.profesor || current_user.tipo == "Administrador"
+      redirect_to(root_path, :notice => "No tienes permiso para modificar esta asignatura.")
+    end
+  end
+
 end
+

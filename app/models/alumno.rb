@@ -13,6 +13,12 @@ class Alumno < ActiveRecord::Base
 
 
   before_validation :asigna_nombre_usuario, :if => Proc.new { |alumno| alumno.new_record? }
+def asignaturas_restantes
+  ids = Asignatura.all.map{|a| a.id}
+  ids_a_eliminar = asignaturas.map{|a| a.id}
+  ids_a_mostrar = ids - ids_a_eliminar
+  Asignatura.find(ids_a_mostrar)
+end
 
   protected
   def asigna_nombre_usuario
@@ -24,12 +30,6 @@ end
 
 
 #TODO: Mostrar solo las que el alumno no tiene
-def asignaturas_restantes
-  ids = Asignatura.all.map{|a| a.id}
-  ids_a_eliminar = asignaturas.map{|a| a.id}
-  ids_a_mostrar = ids - ids_a_eliminar
-  Asignatura.find(ids_a_mostrar)
-end
 # == Schema Information
 #
 # Table name: alumnos

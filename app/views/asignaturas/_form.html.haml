@@ -7,7 +7,7 @@
           %li= msg
 
   .field
-    = f.label :asigntura
+    = f.label :asignatura
     = f.text_field :asignatura
   .field
     = f.label :temario
@@ -15,8 +15,8 @@
   .field
     = f.label :profesor_id
     = f.collection_select :profesor_id, @profesors, :id, :nombre
-  -#.field
-    = f.date_select("asignaturas","diaexamen", :default => {:day =>20})
-
+  .field
+    = f.label :diaexamen
+    = f.datetime_select(:diaexamen, :order => [:day,:month,:year], :ampm =>true)
   .actions
     = f.submit 'Save'

@@ -8,6 +8,9 @@
   </head>
   <body id=<%= "'#{@pagina}'"%>>
     <div class="container">
+      <% if current_user %>
+        Logged in as <%= current_user.email %>
+      <% end %>
       <%= render 'layouts/header' %>
       <section class="round">
       <% flash.each do |key, value| %>

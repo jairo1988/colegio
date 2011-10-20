@@ -4,8 +4,7 @@
     %th Asignatura
     %th Temario
     %th Profesor
-    %th Día Examen
-    %th Hora Examen
+    %th Examen
     %th
     %th
 
@@ -13,13 +12,15 @@
       %tr
         %td= asignatura.asignatura
         %td= asignatura.temario
-        %td= asignatura.profesor.nombre
+        %td= link_to asignatura.profesor.nombre, profesores_path
         %td= asignatura.diaexamen
-        %td= asignatura.horaexamen
 
         - if current_user && current_user.tipo == "Administrador"
-          %td= link_to image_tag("edit.png") , edit_asignatura_path(asignatura)
           %td= link_to image_tag("destroy.jpg"), asignatura,
             :confirm => "¿Seguro que quieres eliminar #{asignatura.asignatura}?",
             :method => :delete, :title => "Elimina la asignatura"
+          %td= link_to 'Nueva Asignatura', new_asignatura_path
+        - if current_user && current_user.tipo == "Profesor"
+          %td= link_to image_tag("edit.png") , edit_asignatura_path(asignatura)
+
 

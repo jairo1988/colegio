@@ -76,7 +76,7 @@ class AsignaturasController < ApplicationController
   # DELETE /asignaturas/1
   # DELETE /asignaturas/1.json
   def destroy
-    if current_user.tipo == "Administrador"
+    if current_user.role == "Administrador"
       @asignatura = Asignatura.find(params[:id])
       @asignatura.destroy
 
@@ -89,7 +89,8 @@ class AsignaturasController < ApplicationController
 private
   def correct_user
     @asignatura = Asignatura.find(params[:id])
-    if current_user.profesor != @asignatura.profesor || current_user.tipo == "Administrador"
+    unless current_user.administrador? ||
+      current_user.profesor? &&  current_user.professor == @asignatura.profesor
       redirect_to(root_path, :notice => "No tienes permiso para modificar esta asignatura.")
     end
   end

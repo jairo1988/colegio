@@ -17,7 +17,7 @@
       %td= profesor.nombre
       %td= profesor.apellido
       %td= mail_to profesor.email
-      %td= mail_to profesor.emailuji
+      %td= mail_to profesor.user.try(:emailuji)
       %td= profesor.oficina
       %td= profesor.telefono
       %td= link_to image_tag("show.png"), profesor

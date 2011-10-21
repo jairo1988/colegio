@@ -16,9 +16,6 @@
     = f.label :email
     = f.text_field :email
   .field
-    = f.label :emailuji
-    = f.text_field :emailuji
-  .field
     = f.label :oficina
     = f.text_field :oficina
   .field
@@ -26,6 +23,12 @@
     = f.text_field :telefono
 
   = f.fields_for :user do |form_user|
+    .field
+      =form_user.label :username
+      =form_user.text_field :username
+    .field
+      = form_user.label :emailuji
+      = form_user.text_field :emailuji
     .field
       = form_user.label :password
       = form_user.password_field :password

@@ -76,5 +76,5 @@ end
     def correct_user
       @user = User.find(params[:id])
 
-      redirect_to(root_path, :notice => "No tienes permiso para modificar este usuario.") unless current_user?(@user) || current_user.tipo == "Administrador"
+      redirect_to(root_path, :notice => "No tienes permiso para modificar este usuario.") unless current_user?(@user) || current_user.role == "Administrador"
     end

@@ -12,7 +12,7 @@
       %tr
         %td= asignatura.asignatura
         %td= asignatura.temario
-        %td= link_to asignatura.profesor.nombre, profesores_path
+        %td= link_to asignatura.profesor.nombre, profesores_path if asignatura.profesor
         %td= asignatura.diaexamen
 
         - if current_user && current_user.role == "Administrador"
@@ -20,7 +20,7 @@
             :confirm => "¿Seguro que quieres eliminar #{asignatura.asignatura}?",
             :method => :delete, :title => "Elimina la asignatura"
           %td= link_to 'Nueva Asignatura', new_asignatura_path
-        - if current_user && current_user.role == "Profesor"
+        - if current_user && (current_user.profesor? || current_user.administrador?)
           %td= link_to image_tag("edit.png") , edit_asignatura_path(asignatura)
 
 

@@ -3,7 +3,7 @@ class Asignatura < ActiveRecord::Base
   validates :profesor_id, :presence =>true
 
 
-  has_many :calificaciones
+  has_many :calificaciones, :dependent => :restrict #:destroy :nulify
   belongs_to :profesor
 end
 # == Schema Information

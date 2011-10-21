@@ -9,7 +9,7 @@
   <body id=<%= "'#{@pagina}'"%>>
     <div class="container">
       <% if current_user %>
-        Logged in as <%= current_user.email %>
+        Logged in as <%= current_user.username %>
       <% end %>
       <%= render 'layouts/header' %>
       <section class="round">

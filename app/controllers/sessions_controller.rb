@@ -4,7 +4,7 @@
       end
 
       def create
-        user = User.authenticate(params[:email], params[:password])
+        user = User.authenticate(params[:acceso], params[:password])
         if user
           session[:user_id] = user.id
           redirect_to root_url, :notice => "Conexion establecida satisfactoriamente ^.^"

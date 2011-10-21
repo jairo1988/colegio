@@ -28,7 +28,6 @@ class AlumnosController < ApplicationController
   def new
     @alumno = Alumno.new
     @alumno.user = User.new
-
     @title= "Sign up"
 
     respond_to do |format|

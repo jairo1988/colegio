@@ -4,7 +4,7 @@
       belongs_to :logable, :polymorphic => true
 
       attr_accessor :password
-      attr_accessible :email, :password, :password_confirmation, :name, :surname, :alumno_id #:tipo
+      attr_accessible :password, :password_confirmation, :username, :emailuji, :alumno_id #:tipo
 
 
 
@@ -12,8 +12,9 @@
       before_save :encrypt_password
       validates_confirmation_of :password
       validates_presence_of :password, :on => :create
-      validates_presence_of :email
-      validates_uniqueness_of :email
+      validates :username, :presence => true
+      validates :emailuji, :presence =>true, :format => { :with => /\A[a-zA-Z0-9_.]+@[a-z.]+\z/i,  :message => "The correct email format is name@server.com"}
+
       #validates :tipo, :inclusion => TIPOS_USUARIO, :allow_nil => true
 
       def alumnos_restantes
@@ -31,8 +32,10 @@
           self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
         end
       end
-      def self.authenticate(email, password)
-         user = find_by_email(email)
+
+      def self.authenticate(acceso, password)
+         user = find_by_username(acceso)
+         user = find_by_emailuji(acceso) unless user
          if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
           user
          else

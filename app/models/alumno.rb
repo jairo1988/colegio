@@ -6,14 +6,11 @@ class Alumno < ActiveRecord::Base
   validates :nombre, :presence => true
   validates :apellido, :presence => true
   validates :email, :presence =>true, :format => { :with => /\A[a-zA-Z0-9_.]+@[a-z.]+\z/i,  :message => "The correct email format is name@server.com"}
-  validates :emailuji, :presence =>true, :format => { :with => /\A[a-zA-Z0-9_.]+@[a-z.]+\z/i, :message => "The correct email format is name@server.com"}
   validates_uniqueness_of :email
-  validates_uniqueness_of :emailuji
 
-  accepts_nested_attributes_for :user
+  accepts_nested_attributes_for :user, :reject_if => :all_blank
 
 
-  before_validation :asigna_nombre_usuario, :if => Proc.new { |alumno| alumno.new_record? }
 def asignaturas_restantes
   ids = Asignatura.all.map{|a| a.id}
   ids_a_eliminar = asignaturas.map{|a| a.id}
@@ -21,12 +18,6 @@ def asignaturas_restantes
   Asignatura.find(ids_a_mostrar)
 end
 
-  protected
-  def asigna_nombre_usuario
-    self.user.name = self.nombre
-    self.user.surname = self.apellido
-    self.user.email = self.emailuji
-  end
 end
 
 

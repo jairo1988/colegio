@@ -9,12 +9,12 @@
         - if signed_in?
           %li
             = link_to "Users", users_path
-          - if current_user && (["Administrador","Profesor"].include?current_user.tipo)
+          - if current_user && (["Administrador","Profesor"].include?current_user.role)
             %li
               = link_to "Profesores", profesores_path
             %li
               = link_to "New Alumno",new_alumno_path
-          - if current_user && current_user.tipo == "Administrador"
+          - if current_user && current_user.role == "Administrador"
             %li
               = link_to "New Profesor",new_profesor_path
 

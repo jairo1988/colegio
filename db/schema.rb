@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(:version => 20111021073220) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
-    t.string   "password_hash"
-    t.string   "password_salt"
   end
 
   create_table "asignaturas", :force => true do |t|
@@ -70,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20111021073220) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
+    t.boolean  "admin",         :default => false
     t.integer  "alumno_id"
     t.integer  "profesor_id"
     t.string   "logable_type"

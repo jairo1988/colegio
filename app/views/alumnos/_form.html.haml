@@ -8,26 +8,33 @@
 
   .field
     = f.label :nombre
+    %br
     = f.text_field :nombre
   .field
     = f.label :apellido
+    %br
     = f.text_field :apellido
   .field
     =f.label :email
+    %br
     =f.text_field :email
 
   = f.fields_for :user do |form_user|
     .field
       =form_user.label :username
+      %br
       =form_user.text_field :username
     .field
       =form_user.label :emailuji
+      %br
       =form_user.text_field :emailuji
     .field
       = form_user.label :password
+      %br
       = form_user.password_field :password
     .field
       = form_user.label :password_confirmation
+      %br
       = form_user.password_field :password_confirmation
 
   .actions

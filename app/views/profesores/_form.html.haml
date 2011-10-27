@@ -6,35 +6,40 @@
         - @profesor.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :nombre
-    = f.text_field :nombre
-  .field
-    = f.label :apellido
-    = f.text_field :apellido
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :oficina
-    = f.text_field :oficina
-  .field
-    = f.label :telefono
-    = f.text_field :telefono
+  %fieldset.datos_alumno
+    %legend Matricular Alumno
+
+    .field
+      = f.label :nombre, :class=>"label"
+      = f.text_field :nombre, :size=>"20", :maxlength=>"20"
+    .field
+      = f.label :apellido, :class=>"label"
+      = f.text_field :apellido, :size=>"20", :maxlength=>"20"
+    .field
+      = f.label :email, :class=>"label"
+      = f.text_field :email, :size=>"20", :maxlength=>"25"
+    .field
+      = f.label :oficina, :class=>"label"
+      = f.text_field :oficina, :size=>"20", :maxlength=>"20"
+    .field
+      = f.label :telefono, :class=>"label"
+      = f.text_field :telefono, :size=>"20", :maxlength=>"20"
 
   = f.fields_for :user do |form_user|
-    .field
-      =form_user.label :username
-      =form_user.text_field :username
-    .field
-      = form_user.label :emailuji
-      = form_user.text_field :emailuji
-    .field
-      = form_user.label :password
-      = form_user.password_field :password
-    .field
-      = form_user.label :password_confirmation
-      = form_user.password_field :password_confirmation
+    %fieldset.datos_usuario
+      %legend Registrar Usuario
+      .field
+        =form_user.label :username, :class=>"label"
+        =form_user.text_field :username, :size=>"20", :maxlength=>"20"
+      .field
+        = form_user.label :emailuji, :class=>"label"
+        = form_user.text_field :emailuji, :size=>"20", :maxlength=>"25"
+      .field
+        = form_user.label :password, :class=>"label"
+        = form_user.password_field :password, :size=>"20", :maxlength=>"25"
+      .field
+        = form_user.label :password_confirmation, :class=>"label"
+        = form_user.password_field :password_confirmation, :size=>"20", :maxlength=>"25"
 
   .actions
     = f.submit 'Save'

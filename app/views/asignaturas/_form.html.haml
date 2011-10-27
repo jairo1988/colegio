@@ -8,14 +8,15 @@
 
   .field
     = f.label :asignatura
-    = f.text_field :asignatura
-  .field
+    = f.text_field :asignatura, :class=>"letra_asignaturas"
+  .field.letra_asignaturas
     = f.label :temario
-    = f.text_field :temario
+  .sidebar
+    = f.text_area :temario, :class=> "letra_asignaturas"
   .field
     = f.label :profesor_id
     = f.collection_select :profesor_id, @profesors, :id, :nombre
-  .field
+  .field.letra_asiagnturas
     = f.label :diaexamen
     = f.datetime_select(:diaexamen, :order => [:day,:month,:year], :ampm =>true)
   .actions

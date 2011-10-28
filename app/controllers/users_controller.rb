@@ -48,6 +48,7 @@ before_filter :authenticate, :except => [:show, :new, :create]
   def create
     @user=User.new(params[:user])
     if @user.save
+      Notifier.welcome(@user).deliver
       redirect_to root_url, :notice => "Signed up!"
     else
       @title = "sign up"

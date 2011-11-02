@@ -15,12 +15,15 @@
         %td.letra_asignaturas= link_to asignatura.profesor.nombre, profesores_path if asignatura.profesor
         %td.letra_asignaturas= asignatura.diaexamen
 
+        - if current_user && (current_user.profesor? || current_user.administrador?)
+          %td= link_to image_tag("edit.png") , edit_asignatura_path(asignatura)
+
         - if current_user && current_user.role == "Administrador"
           %td= link_to image_tag("destroy.jpg"), asignatura,
             :confirm => "¿Seguro que quieres eliminar #{asignatura.asignatura}?",
             :method => :delete, :title => "Elimina la asignatura"
-        - if current_user && (current_user.profesor? || current_user.administrador?)
-          %td= link_to image_tag("edit.png") , edit_asignatura_path(asignatura)
-          %br= link_to 'Nueva Asignatura', new_asignatura_path
+
+%br= link_to 'Nueva Asignatura', new_asignatura_path
+
 
 

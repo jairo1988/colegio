@@ -4,16 +4,21 @@
       belongs_to :logable, :polymorphic => true
 
       attr_accessor :password
-      attr_accessible :password, :password_confirmation, :username, :emailuji, :alumno_id #:tipo
-
-
-
+      attr_accessible :password, :password_confirmation, :username, :emailuji, :alumno_id, :photo
 
       before_save :encrypt_password
       validates_confirmation_of :password
       validates_presence_of :password, :on => :create
       validates :username, :presence => true
       validates :emailuji, :presence =>true, :format => { :with => /\A[a-zA-Z0-9_.]+@[a-z.]+\z/i,  :message => "The correct email format is name@server.com"}
+
+       # Paperclip
+      has_attached_file :photo,
+        :styles => {
+          :thumb => "50x50#", :small => "50x50>"}
+      # Validaciones de Paperclip
+      validates_attachment_size :photo, :less_than => 2.megabytes
+      validates_attachment_content_type :photo, :content_type => ['image/jpeg','image/png']
 
       #validates :tipo, :inclusion => TIPOS_USUARIO, :allow_nil => true
 
@@ -23,7 +28,11 @@
         ids_a_mostrar= ids - ids_a_eliminar
         ids_a_mostrar << self.alumno_id
         ids_a_mostrar.compact
+        if false && !ids_a_mostrar.empty?
         Alumno.find(ids_a_mostrar)
+        else
+          []
+        end
       end
 
       def encrypt_password

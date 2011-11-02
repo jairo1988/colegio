@@ -231,9 +231,12 @@ div.user_info span.user_name {
 fieldset{
 
   width: 45%;
-  &.datos_alumno {
+  &.datos_profesor {
     float: left;
   }
+  &.datos_alumno {
+    float: left;
+}
 }
 .letra_asignaturas{
   font-size: 15px;
@@ -241,4 +244,24 @@ fieldset{
 }
 .actions {
   clear: both;
+}
+
+//.resaltado {}
+
+//#asignaturas{
+  //.resaltado{
+    //background-color: #aaa;
+  //}
+//}
+h1 {
+background-color: red;
+}
+#azul{
+color: blue;
+}
+table tr {
+color: green;
+}
+tr td{
+color: black;
 }

@@ -28,6 +28,7 @@ before_filter :authenticate, :except => [:show, :new, :create]
         format.json { head :ok }
       else
         @title= "edit User"
+        @alumnos = @user.alumnos_restantes
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end

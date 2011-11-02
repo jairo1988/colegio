@@ -11,6 +11,9 @@ gem 'haml-rails'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'cancan'
 gem 'letter_opener'
+gem 'gravatar_image_tag'
+gem "carrierwave"
+gem "paperclip"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

@@ -1,4 +1,4 @@
-= form_for @alumno do |f|
+= form_for @alumno, :html => { :multipart => true} do |f|
   -if @alumno.errors.any?
     #error_explanation
       %h2= "#{pluralize(@alumno.errors.count, "error")} prohibited this alumno from being saved:"
@@ -6,36 +6,36 @@
         - @alumno.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :nombre
-    %br
-    = f.text_field :nombre
-  .field
-    = f.label :apellido
-    %br
-    = f.text_field :apellido
-  .field
-    =f.label :email
-    %br
-    =f.text_field :email
+  %fieldset.datos_alumno
+    %legend Matricular Alumno
+    .field
+      = f.label :nombre, :class => "label"
+      = f.text_field :nombre, :size => "20", :maxlength => "20"
+    .field
+      = f.label :apellido, :class => "label"
+      = f.text_field :apellido, :size => "20", :maxlength => "20"
+    .field
+      =f.label :email, :class => "label"
+      =f.text_field :email, :size => "20", :maxlength => "20"
 
   = f.fields_for :user do |form_user|
-    .field
-      =form_user.label :username
-      %br
-      =form_user.text_field :username
-    .field
-      =form_user.label :emailuji
-      %br
-      =form_user.text_field :emailuji
-    .field
-      = form_user.label :password
-      %br
-      = form_user.password_field :password
-    .field
-      = form_user.label :password_confirmation
-      %br
-      = form_user.password_field :password_confirmation
+    %fieldset.datos_usuario
+      %legend Registrar Usuario
+      .field
+        =form_user.label :username, :class => "label"
+        =form_user.text_field :username, :size => "20", :maxlength => "20"
+      .field
+        =form_user.label :emailuji, :class => "label"
+        =form_user.text_field :emailuji, :size => "20", :maxlength => "20"
+      .field
+        = form_user.label :password, :class => "label"
+        = form_user.password_field :password, :size => "20", :maxlength => "20"
+      .field
+        = form_user.label :password_confirmation, :class => "label"
+        = form_user.password_field :password_confirmation, :size => "20", :maxlength => "20"
+      .field
+        = form_user.label :photo
+        = form_user.file_field :photo
 
   .actions
     = f.submit 'Save'

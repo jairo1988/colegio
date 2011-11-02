@@ -1,4 +1,4 @@
-= form_for @user do |f|
+= form_for @user, :html => { :multipart => true}  do |f|
   -if @user.errors.any?
     #error_explanation
       %h2= "#{pluralize(@user.errors.count, "error")} prohibited this alumno from being saved:"
@@ -7,14 +7,14 @@
           %li= msg
 
   .field
-    = f.label :name
-    = f.text_field :name
+    = f.label :username
+    = f.text_field :username
+  -#.field
+  -#  = f.label :surname
+  -#  = f.text_field :surname
   .field
-    = f.label :surname
-    = f.text_field :surname
-  .field
-    =f.label :email
-    =f.text_field :email
+    =f.label :emailuji
+    =f.text_field :emailuji
   .field
     =f.label :password
     =f.password_field :password
@@ -24,6 +24,9 @@
   .field
     = f.label :alumno_id
     = f.collection_select :alumno_id, @alumnos, :id, :nombre, :prompt => true
+  .field
+    = f.label :photo
+    = f.file_field :photo
   -#.field
     -#= f.label :tipo
     -#%br

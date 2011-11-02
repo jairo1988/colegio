@@ -10,6 +10,7 @@
     <div class="container">
       <% if current_user %>
         Logged in as <%= current_user.username %>
+        <%= image_tag current_user.photo.url(:thumb) %>
       <% end %>
       <%= render 'layouts/header' %>
       <section class="round">
